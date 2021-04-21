@@ -1,0 +1,5 @@
+총을 쏜다
+gun.atk()
+Managers.Pool.Pop(총알) ->1발씩 가져옴
+Managers.Pool.Pop(총알) -> 컨테이너를 가져와서 알아서?
+....

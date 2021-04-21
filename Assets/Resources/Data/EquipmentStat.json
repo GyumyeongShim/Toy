@@ -1,0 +1,28 @@
+{
+		"EquipmentStat" : [
+		{
+			"itemId" : "1",
+			"minlevel" : "1",
+			"atk" : "10",
+			"enhancefigure" : "0",
+			"meshname" : "임의의 메쉬 혹은 모델",
+			"effectname" : "사용할 임의의 이펙트프리펩"
+		},
+		{
+			"itemId" : "1",
+			"minlevel" : "1",
+			"atk" : "10",
+			"enhancefigure" : "0",
+			"meshname" : "임의의 메쉬 혹은 모델",
+			"effectname" : "사용할 임의의 이펙트프리펩"
+		},
+		{
+			"itemId" : "1",
+			"minlevel" : "1",
+			"atk" : "10",
+			"enhancefigure" : "0",
+			"meshname" : "임의의 메쉬 혹은 모델",
+			"effectname" : "사용할 임의의 이펙트프리펩"
+		},
+	]
+}
