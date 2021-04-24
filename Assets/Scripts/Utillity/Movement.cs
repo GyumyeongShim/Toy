@@ -16,9 +16,16 @@ public class Movement : MonoBehaviour //물리가 적용된 움직임을 구현�
     {
         //해당 스크립트를 가진 오브젝트에게서 특정 컴포넌트가 있는지 확인하고 없다면 추가해준다!
         //아래의 코드는 잘못된 코드임, 임시로 사용하는 코드
-        m_rigid = GetComponent<Rigidbody>();
-        if (m_rigid == null)
-            m_rigid = gameObject.AddComponent<Rigidbody>() as Rigidbody;
+        if (Managers.Scene.GetActiveSceneName() == "MatchCube")
+        {
+            return;
+        }
+        else
+        {
+            m_rigid = GetComponent<Rigidbody>();
+            if (m_rigid == null)
+                m_rigid = gameObject.AddComponent<Rigidbody>() as Rigidbody;
+        }
     }
 
     private void Update()

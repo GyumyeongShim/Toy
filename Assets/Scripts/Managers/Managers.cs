@@ -80,13 +80,13 @@ public class Managers : MonoBehaviour
     {
         //모든것을 초기화
         Input.Clear();
-        //Data.Clear();
-        //Resource.Clear();
-        //Pool.Clear();
-        //Effect.Clear();
-        //UI.Clear();
-        //Sound.Clear();
-        //Stage.Clear();
-        //Scene.Clear();
+        Data.Clear();
+        Resource.Clear();
+        Pool.Clear();
+        Effect.Clear();
+        UI.Clear();
+        Sound.Clear();
+        Stage.Clear();
+        Scene.Clear();
     }
 }

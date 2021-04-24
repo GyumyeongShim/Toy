@@ -15,7 +15,7 @@ public class DataManager
 
     public void Init()
     {
-        m_dicStat = LoadJson<StatData, int, Stat>("PlayerStat").MakeDictionary();
+        //m_dicStat = LoadJson<StatData, int, Stat>("PlayerStat").MakeDictionary();
     }
 
     Loader LoadJson<Loader,key,value>(string path) where Loader : ILoader<key,value>

@@ -27,7 +27,7 @@ public class SceneExManager
 
     public string GetActiveSceneName()
     {
-        return SceneManager.GetActiveScene().ToString();
+        return SceneManager.GetActiveScene().name;
     }
 
     public void RestartScene()

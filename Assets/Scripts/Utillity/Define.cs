@@ -27,7 +27,9 @@ public class Define : MonoBehaviour
         Press,
         PointerDown,
         PointerUp,
-        Click //클릭 후 때는 순간
+        LClick, //클릭 후 때는 순간
+        RClick,
+        Wheel
     }
 
     public enum Layer

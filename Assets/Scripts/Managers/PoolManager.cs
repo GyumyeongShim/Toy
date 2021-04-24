@@ -13,7 +13,7 @@ public class PoolManager
         //미리 이펙트 사운드 등등을 미리 풀링해둘것...
     }
 
-    void CreatPool(string objname, int cnt = 5)
+    public void CreatPool(string objname, int cnt = 10)
     {
         if (cnt <= 0)
             return;

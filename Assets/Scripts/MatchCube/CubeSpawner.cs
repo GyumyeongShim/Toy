@@ -10,6 +10,9 @@ public class CubeSpawner : MonoBehaviour
     private Color[] m_cubeColors;
     public Color[] CubeColors => m_cubeColors;
 
+    [SerializeField]
+    private float m_multiple; //배속
+
     //큐브셋 생성을 위한 변수
     [SerializeField]
     private GameObject m_cubePrefabs; //큐브셋 프리펩
@@ -35,7 +38,20 @@ public class CubeSpawner : MonoBehaviour
     {
         while(true)
         {
-            GameObject clone = Instantiate(m_cubePrefabs, m_spawnTransform.position,)
+            //해당 위치에 끊임없이 만들어줌
+            GameObject clone = Instantiate(m_cubePrefabs, m_spawnTransform.position, Quaternion.identity);
+            //9개의 큐브 색상을 임의로 설정
+            MeshRenderer[] renderers = clone.GetComponentsInChildren<MeshRenderer>();
+
+            int index;
+
+            for(int i=0;i<renderers.Length;++i)
+            {
+                index = Random.Range(0, CubeColors.Length); //2라면 0,1 3이면 0,1,2
+                renderers[i].material.color = CubeColors[index];
+            }
+
+            yield return new WaitForSeconds(m_spawnTime);
         }
     }
 }

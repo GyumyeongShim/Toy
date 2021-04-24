@@ -20,6 +20,24 @@ public class InputManager
             m_keyAction.Invoke();
         }
 
+        if(m_mouseAction != null)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                m_mouseAction.Invoke(Define.MouseEvent.LClick);
+            }
+
+            if(Input.GetMouseButton(1))
+            {
+                m_mouseAction.Invoke(Define.MouseEvent.RClick);
+            }
+
+            if (Input.GetMouseButton(2))
+            {
+                m_mouseAction.Invoke(Define.MouseEvent.Wheel);
+            }
+        }
+
         //if (m_mouseAction != null)
         //{
         //    if (Input.GetMouseButton(0)) //누르는 중
@@ -38,7 +56,6 @@ public class InputManager
         //        {
         //            if (Time.time < m_pressedTime + 0.2f)
         //                m_mouseAction.Invoke(Define.MouseEvent.Click);
-
         //            m_mouseAction.Invoke(Define.MouseEvent.PointerUp);
         //        }
         //        m_pressed = false;
