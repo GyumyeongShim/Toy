@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AccelPlatformController : MonoBehaviour
+public class AccelPlatformController : BaseController
 {
     [SerializeField]
     private float m_accelForce;
@@ -11,7 +11,7 @@ public class AccelPlatformController : MonoBehaviour
     private Vector3 m_dir;
     private AudioSource m_audioSource;
 
-    void Start()
+    public override void Init()
     {
         m_audioSource = GetComponent<AudioSource>();
     }
@@ -24,4 +24,5 @@ public class AccelPlatformController : MonoBehaviour
             collision.transform.GetComponent<Movement>().MoveTo(m_dir, m_accelForce);
         }
     }
+
 }

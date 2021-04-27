@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatformController : MonoBehaviour
+public class MovingPlatformController : BaseController
 {
     [SerializeField]
-    private GameObject[] m_wayPoints; //이동가능한 지점
+    private GameObject[] m_wayPoints = null; //이동가능한 지점
 
     [SerializeField]
-    private float m_waitTime; //wayPoint 도착 후 대기시간
+    private float m_waitTime = 0; //wayPoint 도착 후 대기시간
 
     [SerializeField]
-    private float m_speed;
-    private int m_wayPointCount;
+    private float m_speed = 0;
+    private int m_wayPointCount = 0;
     private int m_currentIndex = 0;
 
-    void Start()
+    public override void Init()
     {
+        m_state = Define.State.Move;
         m_wayPointCount = m_wayPoints.Length;
         transform.position = m_wayPoints[m_currentIndex].transform.position;
 
@@ -83,5 +84,6 @@ public class MovingPlatformController : MonoBehaviour
             collision.transform.SetParent(null);
         }
     }
+
     #endregion
 }

@@ -6,7 +6,7 @@ using TMPro;
 public class CoinCountViewer : MonoBehaviour
 {
     [SerializeField]
-    private StageController m_stageController;
+    private StageMaster m_StageMaster;
     private TextMeshProUGUI m_textCoinCount;
 
     void Start()
@@ -16,6 +16,6 @@ public class CoinCountViewer : MonoBehaviour
 
     void Update()
     {
-        m_textCoinCount.text = m_stageController.ChangeCoin();
+        m_textCoinCount.text = m_StageMaster.ChangeCoin();
     }
 }

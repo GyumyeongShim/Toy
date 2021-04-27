@@ -7,3 +7,4 @@ aicontroller 혹은 reactioncontroller 등등이 들어가면 조연배우
 화면에 plane을 만들고 ui카메라(직교)로 만들면 로그인씬 등등이 될것
 씬 전환(촬영지 이동)한다고 다 버리고 가는것이 아닌
 dont destroy onroad를 통해 영화 촬영에 필수적인 조명, 카메라 등등을 고정하는것
+

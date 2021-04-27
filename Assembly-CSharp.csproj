@@ -56,8 +56,9 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\MatchCube\ObjectDetector.cs" />
+    <Compile Include="Assets\Scripts\BehaviourTree\BTRoot.cs" />
     <Compile Include="Assets\Scripts\Controller\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\BehaviourTree\BTSequence.cs" />
     <Compile Include="Assets\Scripts\MatchCube\CubeChecker.cs" />
     <Compile Include="Assets\Scripts\RollABall\MovingPlatformController.cs" />
     <Compile Include="Assets\Scripts\Managers\PoolManager.cs" />
@@ -66,18 +67,20 @@
     <Compile Include="Assets\Scripts\MatchCube\PositionAutoDestroyer.cs" />
     <Compile Include="Assets\Scripts\Managers\DataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ResourceManager.cs" />
+    <Compile Include="Assets\Scripts\BehaviourTree\BTNode.cs" />
     <Compile Include="Assets\Scripts\Managers\Managers.cs" />
     <Compile Include="Assets\Scripts\Managers\EffectManager.cs" />
     <Compile Include="Assets\Scripts\Data\SpendContents.cs" />
     <Compile Include="Assets\Scripts\RollABall\AccelPlatformController.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Controller\BaseController.cs" />
     <Compile Include="Assets\Scripts\RollABall\ParticleAutoDestroyer.cs" />
     <Compile Include="Assets\Scripts\Managers\Pool.cs" />
     <Compile Include="Assets\Scripts\Managers\SceneExManager.cs" />
-    <Compile Include="Assets\Scripts\MatchCube\CubeSelecter.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Utillity\Extension.cs" />
+    <Compile Include="Assets\Scripts\JumpingBall\PlatformController.cs" />
     <Compile Include="Assets\Scripts\Utillity\Define.cs" />
     <Compile Include="Assets\Scripts\Data\EquipmentContents.cs" />
     <Compile Include="Assets\Scripts\MatchCube\CubeController.cs" />
@@ -86,8 +89,10 @@
     <Compile Include="Assets\Scripts\Data\StatContents.cs" />
     <Compile Include="Assets\Scripts\RollABall\PortalController.cs" />
     <Compile Include="Assets\Scripts\MatchCube\CubeSpawner.cs" />
+    <Compile Include="Assets\Scripts\JumpingBall\PlatformSpawner.cs" />
     <Compile Include="Assets\Scripts\Utillity\Movement.cs" />
-    <Compile Include="Assets\Scripts\StageController.cs" />
+    <Compile Include="Assets\Scripts\BehaviourTree\BTSelector.cs" />
+    <Compile Include="Assets\Scripts\StageMaster.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

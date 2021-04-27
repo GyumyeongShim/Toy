@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PortalController : MonoBehaviour
+public class PortalController : BaseController
 {
     [SerializeField]
     private Transform m_arrivePoint;
     private AudioSource m_audioSource;
 
-    void Start()
+    public override void Init()
     {
         m_audioSource = GetComponent<AudioSource>();
     }

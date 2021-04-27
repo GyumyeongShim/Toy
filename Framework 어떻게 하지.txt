@@ -36,6 +36,11 @@ Clear()
 배치된 오브젝트가 담긴 스테이지를 씬에 관리한다
 data->resource->effect,pool,ui->stage->scene
 
+모든 씬에는
+1. MainCamera, Light, StageController를 갖는다
+2. StageMaster는 Manager 관련을 Init()해준다.
+3. StageMaster는 Data에 저장된 Stage 구상을 진행해준다
+
 Pool이 해야할 일
 어떤 오브젝트? GameObject m_origin
 사용 여부 bool m_isUsing

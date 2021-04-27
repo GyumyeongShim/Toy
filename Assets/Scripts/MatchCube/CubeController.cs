@@ -2,21 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeController : MonoBehaviour
+public class CubeController : BaseController
 {
+    //내부의 큐브들이 이것을 1개씩 갖는다
     private CubeSpawner m_cubeSpawner;
     private CubeChecker m_cubeChecker;
     private MeshRenderer m_meshRenderer;
     private int m_colorIndex;
 
-    public void Init(CubeSpawner cubeSpawner, CubeChecker cubechecker)
+    public override void Init()
     {
-        m_cubeSpawner = cubeSpawner;
-        m_cubeChecker = cubechecker;
+        m_cubeChecker = this.GetComponentInParent<CubeChecker>().GetCubeChecker();
+        m_cubeSpawner = this.GetComponentInParent<CubeChecker>().GetCubeSpawner();
+        //m_cubeChecker = GetComponent<CubeChecker>().GetCubeChecker();
+        //m_cubeSpawner = GetComponent<CubeChecker>().GetCubeSpawner();
 
         m_meshRenderer = GetComponent<MeshRenderer>();
         m_meshRenderer.material.color = m_cubeSpawner.CubeColors[0];
         m_colorIndex = 0;
+    }
+
+    public void Init(CubeSpawner cubeSpawner, CubeChecker cubechecker)
+    {
+        m_cubeSpawner = cubeSpawner;
+        m_cubeChecker = cubechecker;
     }
 
     public void ChangeColor(Define.MouseEvent mousebtn)
@@ -61,4 +70,5 @@ public class CubeController : MonoBehaviour
         else
             m_cubeChecker.IncorrectCnt++;
     }
+
 }

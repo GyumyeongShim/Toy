@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PoolManager
 {
-    Dictionary<string, List<Pool>> m_dicPool; //stack, queue는 c#에서 무한하다함
+    Dictionary<string, List<Pool>> m_dicPool = null; //stack, queue는 c#에서 무한하다함
 
     //오리지널이 있으면 사용
     //혹시 풀링된 것이 있다면 사용

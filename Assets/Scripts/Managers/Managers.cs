@@ -66,7 +66,7 @@ public class Managers : MonoBehaviour
             m_instance.m_input.Init();
             m_instance.m_data.Init();
             m_instance.m_resource.Init();
-            m_instance.m_pool.Init();
+            //m_instance.m_pool.Init();
             m_instance.m_effect.Init();
             m_instance.m_ui.Init();
             m_instance.m_sound.Init();
@@ -82,7 +82,7 @@ public class Managers : MonoBehaviour
         Input.Clear();
         Data.Clear();
         Resource.Clear();
-        Pool.Clear();
+        //Pool.Clear();
         Effect.Clear();
         UI.Clear();
         Sound.Clear();

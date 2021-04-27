@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinController : MonoBehaviour
+public class CoinController : BaseController
 {
     [SerializeField]
-    private StageController m_stageController;
+    private StageMaster m_StageMaster;
 
     [SerializeField]
-    private GameObject m_coinEffectPrefab;
+    private GameObject m_coinEffectPrefab = null;
     private float m_rotateSpeed = 100.0f;
 
-    void Start()
+    public override void Init()
     {
-        
+        m_state = Define.State.Move;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void UpdateMove()
     {
         transform.Rotate(Vector3.right * m_rotateSpeed * Time.deltaTime);
     }
@@ -25,11 +24,12 @@ public class CoinController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //이펙트 생성
-        GameObject clone = Instantiate(m_coinEffectPrefab);
+        GameObject clone = Managers.Resource.Instantiate(m_coinEffectPrefab.name);
+        //GameObject clone = Instantiate(m_coinEffectPrefab);
         clone.transform.position = transform.position;
 
         //코인 획득 시 처리, 지금은 스테이지 컨트롤러지만 씬매니저를 통해서 진행하도록 하겠다
-        m_stageController.GetCoin();
+        m_StageMaster.GetCoin();
 
         //코인 제거
         Destroy(gameObject);

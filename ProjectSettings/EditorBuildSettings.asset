@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/RollABall.unity
     guid: f2a82df3759a1b44b8f98edb90e97310
   - enabled: 1
-    path: Assets/Scenes/Stage02.unity
+    path: Assets/Scenes/SelectStage.unity
     guid: 31b69c1d6f1dfed4d8cff99edb203573
   m_configObjects: {}

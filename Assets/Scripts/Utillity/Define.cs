@@ -10,6 +10,16 @@ public class Define : MonoBehaviour
         BackView
     }
 
+    public enum WorldObject
+    {
+        Player, //유저
+        Enemy, //대부분 장르의 몬스터
+        InterActionObject, //기믹, 유동적인 상황 생성
+        ReactionObject, //위의 기믹과 연결될 상황오브젝트?
+        NPC, //상점주인 등 고정 위치, 특정 행동 반복
+        None
+    }
+
     public enum Gamegenre
     {
         Roll,
@@ -42,7 +52,9 @@ public class Define : MonoBehaviour
     public enum State
     {
         Idle,
-        Moving,
+        Move,
+        Atk,
+        Hit,
         Die,
         None
     }
@@ -51,6 +63,7 @@ public class Define : MonoBehaviour
     {
         Bgm,
         Effect,
+        Voice,
         MaxCount
     }
 
