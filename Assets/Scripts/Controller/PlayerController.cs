@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
+    private string m_stageName;
+
     [Header("RollABall")]
     [SerializeField]
     private float m_minHeight;
@@ -11,7 +13,7 @@ public class PlayerController : BaseController
 
     [Header("Jumping Ball")]
     [SerializeField]
-    private PlatformSpawner m_platformSpawner;
+    private PlatformSpawner m_platformSpawner= null;
 
     [SerializeField]
     private Transform m_player; //자식으로 있는 sphere 오브젝트
@@ -28,7 +30,7 @@ public class PlayerController : BaseController
     private float m_gravity = -9.81f; //중력
     private int m_platformIdx = 0; //플레이어가 다음으로 이동할 플랫폼 인덱스
 
-    private string m_stageName;
+    private RaycastHit m_hit; //광선에 부딪힌 오브젝트 정보 저장
 
     public override void Init()
     {
@@ -45,27 +47,70 @@ public class PlayerController : BaseController
             Managers.Input.m_keyAction += OnKeyboard;
         }
 
-
         m_movement = GetComponent<Movement>();
 
         m_state = Define.State.Idle;
 
     }
 
-    private IEnumerator Start()
+    //private IEnumerator Start()
+    //{
+    //    //좌클릭 전까지 시작하지 않고 대기
+    //    while(true)
+    //    {
+    //        if (Input.GetMouseButtonDown(0))
+    //        {
+    //            //y,z 이동제어
+    //            StartCoroutine("MoveLoop");
+    //            break;
+    //        }
+    //    }
+
+    //    yield return null;
+    //}
+    private void Update()
     {
-        //좌클릭 전까지 시작하지 않고 대기
-        while(true)
+        //아래쪽 방향으로 광선을 발사해 광선에 부딪히는 발판 정보를 m_hit에 저장
+        Physics.Raycast(transform.position, Vector3.down, out m_hit, 10.0f);
+        ChageSceneFallDown();
+    }
+
+    void OnKeyboard()
+    {
+        Vector3 dir = new Vector3(0, 0, 0);
+
+        if (Input.GetKey(KeyCode.W))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                //y,z 이동제어
-                StartCoroutine("MoveLoop");
-                break;
-            }
+            dir += Vector3.forward;
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward), 0.2f);
+            //transform.position += Vector3.forward * Time.deltaTime * m_speed;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            dir += Vector3.back;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            dir += Vector3.right;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            dir += Vector3.left;
         }
 
-        yield return null;
+        m_state = Define.State.Move; //임시로 move상태만
+        m_movement.MoveTo(dir);
+    }
+
+    void OnMouse(Define.MouseEvent evt)
+    {
+        if (evt == Define.MouseEvent.LClick)
+        {
+            StartCoroutine("MoveLoop");
+            MoveToX();
+        }
+        //if (Input.GetMouseButton(0))
+        //    MoveToX();
     }
 
     private IEnumerator MoveLoop()
@@ -73,11 +118,23 @@ public class PlayerController : BaseController
         while(true)
         {
             m_platformIdx++;
+
             float current = (m_platformIdx - 1) * m_platformSpawner.ZDst;
             float next = m_platformIdx * m_platformSpawner.ZDst;
-
             //플레이어의 y,z 위치 제어
             yield return StartCoroutine(MoveToYZ(current, next));
+            //플레이어가 나올 플랫폼에 도착했을 떄
+            //플레이어의 도착 위치가 플랫폼이면
+
+            if (m_hit.transform != null)
+            {
+                Debug.Log("Hit");
+            }
+            else
+            {
+                Debug.Log("GameOver");
+                break;
+            }
         }
     }
 
@@ -112,47 +169,6 @@ public class PlayerController : BaseController
 
     }
 
-    private void Update()
-    {
-        if(m_stageName == "RollABall")
-            ChageSceneFallDown();
-    }
-
-    void OnKeyboard()
-    {
-        Vector3 dir = new Vector3(0, 0, 0);
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            dir += Vector3.forward;
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward), 0.2f);
-            //transform.position += Vector3.forward * Time.deltaTime * m_speed;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            dir += Vector3.back;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            dir += Vector3.right;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            dir += Vector3.left;
-        }
-
-        m_state = Define.State.Move; //임시로 move상태만
-        m_movement.MoveTo(dir);
-    }
-
-    void OnMouse(Define.MouseEvent evt)
-    {
-        if (evt == Define.MouseEvent.LClick)
-            MoveToX();
-        //if (Input.GetMouseButton(0))
-        //    MoveToX();
-    }
-
     private void MoveToX()
     {
         float x = 0.0f;
@@ -180,10 +196,9 @@ public class PlayerController : BaseController
 
     private void ChageSceneFallDown()
     {
-        if (transform.position.y < m_minHeight)
+        if (m_stageName == "RollABall" && transform.position.y < m_minHeight)
         {
             Managers.Scene.RestartScene();
         }
     }
-
 }

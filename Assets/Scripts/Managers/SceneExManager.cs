@@ -5,7 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneExManager
 {
-    public void Init() { }
+    public void Init()
+    {
+        GameObject root = GameObject.Find("@SceneEx");
+        if (root == null)
+        {
+            root = new GameObject { name = "@SceneEx" };
+            Object.DontDestroyOnLoad(root);
+        }
+    }
     //public BaseScene CurrentScene { get { return GameObject.FindObjectOfType<BaseScene>(); } }
 
     public void LoadScene(Define.Scene type)

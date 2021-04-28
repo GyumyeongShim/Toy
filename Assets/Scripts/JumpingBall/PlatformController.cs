@@ -10,7 +10,7 @@ public class PlatformController : BaseController
 
     public override void Init()
     {
-
+        m_mainCamera = Camera.main;
     }
 
     public void Setup(PlatformSpawner spawner)

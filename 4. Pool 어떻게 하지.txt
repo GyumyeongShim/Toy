@@ -1,0 +1,21 @@
+총을 쏜다
+gun.atk()
+Managers.Pool.Pop(총알) ->1발씩 가져옴
+Managers.Pool.Pop(총알) -> 컨테이너를 가져와서 알아서?
+....
+Pool이 해야할 일
+어떤 오브젝트? GameObject m_origin
+사용 여부 bool m_isUsing
+초기화 init()
+원본 만들어 두기 Create()
+
+전부 제거하기 Clear()
+
+PoolMgr이 해야할 일
+글자 + pool 갯수로 저장해두기 dictionary<string, Pool> m_dicPool
+초기화
+pool 만들어두기 CreatePool()
+pool 빌려주기 GetPool() / DnqueuePool() / PopPool()
+pool 반납받기 ReturnPool() /EnqueuePool() / PushPool()
+pool 제거하기 RemovePool() /
+전부 제거하기 Clear()

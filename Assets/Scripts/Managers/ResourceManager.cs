@@ -6,6 +6,12 @@ public class ResourceManager
 {
     public void Init()
     {
+        GameObject root = GameObject.Find("@Resource");
+        if (root == null)
+        {
+            root = new GameObject { name = "@Resource" };
+            Object.DontDestroyOnLoad(root);
+        }
         //최초의 데이터를 읽어오고 해당 값으로 pool을 만든다
     }
 

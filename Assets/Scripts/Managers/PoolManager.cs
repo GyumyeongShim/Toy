@@ -10,6 +10,12 @@ public class PoolManager
     //혹시 풀링된 것이 있다면 사용
     public void Init()
     {
+        GameObject root = GameObject.Find("@Pool");
+        if (root == null)
+        {
+            root = new GameObject { name = "@Pool" };
+            Object.DontDestroyOnLoad(root);
+        }
         //미리 이펙트 사운드 등등을 미리 풀링해둘것...
     }
 

@@ -1,0 +1,5 @@
+enum 값에 따라 Effect, Prefab, sound 등을 준비
+load( enum _type)로 내부에서 switch로 구분할것
+만들고 거의 pool컴포넌트 주고, PoolMgr로 많이 쌓아둘것
+
+이 부분에서 Corutine 혹은 쓰레드를 통한 시간감소를 노려보자

@@ -11,7 +11,15 @@ public class InputManager
     bool m_pressed = false;
     float m_pressedTime = 0;
 
-    public void Init() { }
+    public void Init()
+    {
+        GameObject root = GameObject.Find("@Input");
+        if (root == null)
+        {
+            root = new GameObject { name = "@Input" };
+            UnityEngine.Object.DontDestroyOnLoad(root);
+        }
+    }
 
     public void OnUpdate()
     {

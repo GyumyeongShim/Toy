@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController : BaseController
 {
-    [SerializeField]
-    private GameObject m_target;
-
     [SerializeField]
     private float m_minDst = 3;
 
@@ -26,33 +23,28 @@ public class CameraController : MonoBehaviour
 
     private float x, y; //마우스 이동방향 값
 
-    void Start()
+    public override void Init()
     {
         //목표와 카메라의 위치를 기준으로 dst 초기화
-        m_dst = Vector3.Distance(transform.position, m_target.transform.position);
+        m_dst = Vector3.Distance(transform.position, base.m_target.transform.position);
         Vector3 angle = transform.eulerAngles;
         x = angle.y;
         y = angle.x;
 
-        Managers.Input.m_keyAction -= OnMouseMove;
-        Managers.Input.m_keyAction += OnMouseMove;
-    }
-
-    private void Update()
-    {
-        if(m_target == null)
-        {
-            return;
-        }
+        //Managers.Input.m_keyAction -= OnMouseMove;
+        //Managers.Input.m_keyAction += OnMouseMove;
     }
 
     private void LateUpdate()
     {
-        if (m_target == null)
+        if (base.m_target == null)
             return;
 
         //카메라의 위치 갱신
-        transform.position = transform.rotation * new Vector3(0, 0, -m_dst) + m_target.transform.position;
+        transform.position = new Vector3(transform.position.x,
+            transform.position.y, 
+            base.m_target.transform.position.z - 10);
+        //transform.position = transform.rotation * new Vector3(0, 0, -m_dst) + base.m_target.transform.position;
     }
 
     void OnMouseMove()

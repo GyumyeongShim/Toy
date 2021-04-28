@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class UIManager
 {
-    public void Init() { }
+    public void Init()
+    {
+        GameObject root = GameObject.Find("@UI");
+        if (root == null)
+        {
+            root = new GameObject { name = "@UI" };
+            Object.DontDestroyOnLoad(root);
+        }
+    }
+
     public void Clear() { }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseController : MonoBehaviour
 {
     [SerializeField] //목표물, 프리펩은 따로하는것으로
-    protected GameObject m_Target;
+    protected GameObject m_target;
 
     [SerializeField] //목적지
     protected Vector3 m_dstPos;
@@ -74,8 +74,6 @@ public abstract class BaseController : MonoBehaviour
                 break;
         }
     }
-
-    //public GameObject GetObj() => this.gameObject;
 
     public abstract void Init();
 
