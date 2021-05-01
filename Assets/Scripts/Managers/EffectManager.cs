@@ -19,6 +19,7 @@ public class EffectManager
         DeActive,
         None
     }
+
     public void Init()
     {
         GameObject root = GameObject.Find("@Effect");
