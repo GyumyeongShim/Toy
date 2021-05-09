@@ -2,35 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#region 적관련 데이터
-//해당 데이터에서 몬스터, 기믹, 퍼즐 등등 여러 값을 이용할 것임
-//아래는 장비를 그냥 가져옴
-//public class EquipmentStat
-//{
-//    //해당 이름들이 json과 동일해야함
-//    //아래는 그냥 예시로 마니 만들어둠
-//    //엑셀에서 불러올 장비와 관련된 수치들 EquipmentStat
-//    public int itemId;
-//    public int minlevel;
-//    public int atk;
-//    public int enhancefigure;
-//    public string meshname;
-//    public string effectname;
-//}
+public class EnemyStat
+{
+    //엑셀을 Json으로 받아오기를 구현된 사이트를 통해서 받아오기?
+    //해당 이름들이 json과 동일해야함, 순서도 맞출것
+    public string Name; //프리펩에서 불러올 이름, 해당값으로 불러오기
+    public string Area; //지역에 따라서 달라지기
+    public int Level;
+    public int Hp;
+    public int Atk;
+    public int Exp; //
+    public int EnemyID;
+}
 
-//public class EquipmentData : ILoader<int, EquipmentStat> //엑셀 수치들을 유니티에서 데이터화시키는 작업
-//{
-//    public List<EquipmentStat> m_listEquipmentStat = new List<EquipmentStat>();
+public class EnemyStatData : ILoader<int, EnemyStat>
+{
+    public List<EnemyStat> m_listEnemyStat = new List<EnemyStat>();
 
-//    public Dictionary<int, EquipmentStat> MakeDictionary()
-//    {
-//        Dictionary<int, EquipmentStat> m_dicEquipData = new Dictionary<int, EquipmentStat>(); //임시 사용
+    public Dictionary<int, EnemyStat> MakeDictionary()
+    {
+        Dictionary<int, EnemyStat> m_dicEnemyStat = new Dictionary<int, EnemyStat>();
 
-//        //Key값으로 아이템id, 나머지는 전부 value
-//        foreach (EquipmentStat stat in m_listEquipmentStat)
-//            m_dicEquipData.Add(stat.itemId, stat);
+        foreach (EnemyStat EnemyStat in m_listEnemyStat)
+            m_dicEnemyStat.Add(EnemyStat.EnemyID, EnemyStat);
 
-//        return m_dicEquipData;
-//    }
-//}
-#endregion
+        return m_dicEnemyStat;
+    }
+}

@@ -1,0 +1,33 @@
+//[]-> ¹è¿­
+//{}-> ±¸Á¶Ã¼
+{
+	"EnemyStat" : [
+	   {
+		  "Name":"Slime",
+		  "Area":"½£",
+		  "Level":1,
+		  "Hp":100,
+		  "Atk":10,
+		  "Exp":1,
+		  "EnemyID":1
+	   },
+	   {
+		  "Name":"Orc",
+		  "Area":"½£",
+		  "Level":2,
+		  "Hp":150,
+		  "Atk":20,
+		  "Exp":10,
+		  "EnemyID":2
+	   },
+	   {
+		  "Name":"Knight",
+		  "Area":"½£",
+		  "Level":3,
+		  "Hp":150,
+		  "Atk":30,
+		  "Exp":12,
+		  "EnemyID":3
+	   }
+	]
+}

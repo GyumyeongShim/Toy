@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
+
 
 public class InputManager
 {
@@ -23,6 +25,9 @@ public class InputManager
 
     public void OnUpdate()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) //UI 관련된 것이 반응하면 아래는 무시함
+            return;
+
         if (Input.anyKey && m_keyAction != null)
         {
             m_keyAction.Invoke();

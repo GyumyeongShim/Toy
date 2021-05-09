@@ -11,7 +11,8 @@ public class DataManager
 {
     //최초에 1번만, 게임 재시작(재도전)하면 stageManager가 읽어온 데이터를 바탕으로 초기화/세팅할것임
     //어떤 데이터가 늘어나도 dictionary를 늘려갑시다
-    public Dictionary<int, Stat> m_dicStat { get; private set; } = new Dictionary<int, Stat>();
+    public Dictionary<int, PlayerStat> m_dicStat { get; private set; } = new Dictionary<int, PlayerStat>();
+    public Dictionary<int, EnemyStat> m_dicEnemyStat { get; private set; } = new Dictionary<int, EnemyStat>();
     //public Dictionary<int, 몬스터스탯> m_dicEnemy { get; private set; } = new Dictionary<int, >();
     //public Dictionary<int, 아이템> m_dicItem { get; private set; } = new Dictionary<int, >();
     //public Dictionary<int, 소비템> m_dicSpend { get; private set; } = new Dictionary<int, >();

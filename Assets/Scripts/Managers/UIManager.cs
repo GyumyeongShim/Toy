@@ -12,6 +12,8 @@ public class UIManager
             root = new GameObject { name = "@UI" };
             Object.DontDestroyOnLoad(root);
         }
+
+        Managers.Resource.Instantiate("UI/UI_ButtonCanvas");
     }
 
     public void Clear() { }

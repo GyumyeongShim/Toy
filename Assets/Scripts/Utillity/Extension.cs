@@ -24,23 +24,23 @@ public static class Extension
 
     public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
     {
-        if (go == null)
+        if (go == null) //최상위 부모 존재 여부
             return null;
 
-        if (recursive == false)
+        if (recursive == false) //바로 자식
         {
-            for (int i = 0; i < go.transform.childCount; i++)
+            for (int i = 0; i < go.transform.childCount; i++) //자식의 갯수만큼
             {
                 Transform transform = go.transform.GetChild(i);
                 if (string.IsNullOrEmpty(name) || transform.name == name)
                 {
                     T component = transform.GetComponent<T>();
-                    if (component != null)
+                    if (component != null) //해당 컴포넌트를 가지고 있다면
                         return component;
                 }
             }
         }
-        else
+        else //자식들을 순회하면서 찾기
         {
             foreach (T component in go.GetComponentsInChildren<T>())
             {

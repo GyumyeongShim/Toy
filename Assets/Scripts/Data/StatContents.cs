@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-#region 스텟관련 데이터
-public class Stat
+public class PlayerStat
 {
     public int level; //해당 이름들이 json과 동일해야함
     public int hp;
     public int atk;
 }
 
-public class StatData : ILoader<int, Stat>
+public class PlayerStatData : ILoader<int, PlayerStat>
 {
-    public List<Stat> m_listStat = new List<Stat>();
-    public Dictionary<int, Stat> MakeDictionary()
+    public List<PlayerStat> m_listPlayerStat = new List<PlayerStat>();
+    public Dictionary<int, PlayerStat> MakeDictionary()
     {
-        Dictionary<int, Stat> m_dicStat = new Dictionary<int, Stat>(); //임시 사용
-        foreach (Stat stat in m_listStat)
-            m_dicStat.Add(stat.level, stat);
+        Dictionary<int, PlayerStat> m_dicPlayerStat = new Dictionary<int, PlayerStat>(); //임시 사용
+        foreach (PlayerStat PlayerStat in m_listPlayerStat)
+            m_dicPlayerStat.Add(PlayerStat.level, PlayerStat);
 
-        return m_dicStat;
+        return m_dicPlayerStat;
     }
 }
-#endregion
